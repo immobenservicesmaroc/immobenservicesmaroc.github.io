@@ -178,7 +178,9 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- site RAPPORT_MIGRATION.md
+          # Copier aussi à la racine pour la publication GitHub Pages depuis main.
+          cp -a site/. .
+          git add -A
           if git diff --cached --quiet; then
             echo 'Le site est déjà à jour.'
           else
